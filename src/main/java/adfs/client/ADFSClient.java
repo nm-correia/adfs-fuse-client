@@ -378,8 +378,9 @@ public class ADFSClient implements Filesystem3, XattrSupport, LifecycleSupport {
     		throw new FuseException().initErrno(FuseException.EPERM);
     	
     	
-		log.info("<adfs open> INFO-> FILE IN CACHE: " + path +
-				" SIZE: " + pathContent.getData().length);
+    	if(pathContent.getData() != null)
+			log.info("<adfs open> INFO-> FILE IN CACHE: " + path +
+					" SIZE: " + pathContent.getData().length);
     	
     	if(isReadOnlyAccess(flags)) {
     		log.info("<adfs open> INFO-> READ ONLY ACCESS: " + path);
