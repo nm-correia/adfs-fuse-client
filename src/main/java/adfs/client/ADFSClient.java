@@ -58,6 +58,11 @@ public class ADFSClient implements Filesystem3, XattrSupport, LifecycleSupport {
     private RemoteCache<String, ADFSFile> infinispanCache;
     
     
+    // ADFS client javafs entry point
+    public ADFSClient(String[] args) {
+        this(new FuseArgumentParser(args).getMountPoint());
+    }
+    
     
     // ADFS client constructor
     public ADFSClient(String mountPoint) {
@@ -678,7 +683,6 @@ public class ADFSClient implements Filesystem3, XattrSupport, LifecycleSupport {
         finally {
             log.info("exiting");
         }
-        
     }
     
     
