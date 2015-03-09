@@ -2,8 +2,6 @@ package adfs.client;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URL;
 import java.nio.BufferOverflowException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -41,8 +39,8 @@ public class ADFSClient implements Filesystem3, XattrSupport, LifecycleSupport {
 	private static final String PROPERTIES_FILENAME = "ADFSClient.properties";
 	private static final String PROP_CACHENAME = "infinispan_cache_name";
 	private static final String PROP_FILESYSTEM = "filesystem";
+	
 	private static final String HDFS_S = "hdfs";
-	//private static final String CASSANDRA_S = "cassandra";
 	private static final String PROP_HDFS_URL = "hdfs_url";
 	
 	
@@ -116,9 +114,6 @@ public class ADFSClient implements Filesystem3, XattrSupport, LifecycleSupport {
 			String hdfs_url = p.getProperty(PROP_HDFS_URL);
 			fs3 = new FuseHdfsClient(hdfs_url);
 		}
-		//else if(fs.compareToIgnoreCase(CASSANDRA_S) == 0) {
-		//	// FUTURE
-		//}
 		else
 			fs3 = null;
 		
